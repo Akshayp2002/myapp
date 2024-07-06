@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notes;
 use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Str;
 
 class NotesController extends Controller
 {
@@ -12,7 +15,12 @@ class NotesController extends Controller
      */
     public function index()
     {
-        //
+        $notes = Notes::where('user_id', Auth::user()->id)->get();
+        $notes = $notes->map(function ($note) {
+            $note->notes = Str::words(strip_tags($note->notes), 8, '...');
+            return $note;
+        });
+        return view('app.notes-view', compact('notes'));
     }
 
     /**
@@ -20,7 +28,8 @@ class NotesController extends Controller
      */
     public function create()
     {
-        //
+        $data = null;
+        return view('app.notes-form', compact('data'));
     }
 
     /**
@@ -28,15 +37,13 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $notes = $request->validate([
+            'title' => 'required',
+            'notes' => 'nullable',
+        ]);
+        $notes['user_id'] = Auth::user()->id;
+        Notes::create($notes);
+        return \to_route('notes.index');
     }
 
     /**
@@ -44,7 +51,8 @@ class NotesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Notes::where('id', $id)->first();
+        return view('app.notes-form', compact('data'));
     }
 
     /**
@@ -52,7 +60,14 @@ class NotesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'notes' => 'nullable|string',
+        ]);
+        $note = Notes::findOrFail($id);
+        // Update the note with the validated data
+        $note->update($validatedData);
+        return \to_route('notes.index');
     }
 
     /**
@@ -60,6 +75,8 @@ class NotesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delete = Notes::where('id',$id)->first();
+        $delete->delete();
+        return \to_route('notes.index');
     }
 }
