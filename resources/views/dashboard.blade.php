@@ -15,7 +15,6 @@
 
             <!-- Component Start -->
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 pt-8 p-2">
-
                 <a href="{{ route('notes.index') }}">
                     <div class="w-48 bg-white shadow-2xl p-6 rounded-2xl">
                         <div class="flex items-center">
@@ -28,13 +27,12 @@
                             </span>
                             <span class="ml-2 text-sm font-medium text-gray-500">Notes</span>
                         </div>
-                        <span class="block text-4xl font-semibold mt-4">1,320</span>
+                        <span class="block text-4xl font-semibold mt-4">{{ $data['notes'] ?? '0' }}</span>
                         <div class="flex text-xs mt-3 font-medium">
-                            <span class="ml-1 text-gray-500">last 14 days</span>
+                            <span class="ml-1 text-gray-500">{{ $data['note_created'] ?? Unknown }}</span>
                         </div>
                     </div>
                 </a>
-
 
                 <div class="w-48 bg-white shadow-2xl p-6 rounded-2xl">
                     <div class="flex items-center">
@@ -47,7 +45,7 @@
                         </span>
                         <span class="ml-2 text-sm font-medium text-gray-500">Passwords</span>
                     </div>
-                    <span class="block text-4xl font-semibold mt-4">3,814</span>
+                    <span class="block text-4xl font-semibold mt-4">00</span>
                     <div class="flex text-xs mt-3 font-medium">
                         <span class="text-green-500">+12%</span>
                         <span class="ml-1 text-gray-500">last 14 days</span>
@@ -64,7 +62,7 @@
                         </span>
                         <span class="ml-2 text-sm font-medium text-gray-500">Comments</span>
                     </div>
-                    <span class="block text-4xl font-semibold mt-4">264</span>
+                    <span class="block text-4xl font-semibold mt-4">00</span>
                     <div class="flex text-xs mt-3 font-medium">
                         <span class="text-red-500">-2%</span>
                         <span class="ml-1 text-gray-500">last 14 days</span>
@@ -81,7 +79,7 @@
                         </span>
                         <span class="ml-2 text-sm font-medium text-gray-500">Comments</span>
                     </div>
-                    <span class="block text-4xl font-semibold mt-4">264</span>
+                    <span class="block text-4xl font-semibold mt-4">00</span>
                     <div class="flex text-xs mt-3 font-medium">
                         <span class="text-red-500">-2%</span>
                         <span class="ml-1 text-gray-500">last 14 days</span>
@@ -98,7 +96,7 @@
                         </span>
                         <span class="ml-2 text-sm font-medium text-gray-500">Comments</span>
                     </div>
-                    <span class="block text-4xl font-semibold mt-4">264</span>
+                    <span class="block text-4xl font-semibold mt-4">00</span>
                     <div class="flex text-xs mt-3 font-medium">
                         <span class="text-red-500">-2%</span>
                         <span class="ml-1 text-gray-500">last 14 days</span>
