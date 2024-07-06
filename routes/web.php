@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +11,13 @@ Route::get('/notes', function () {
     return view('app.notes-view');
 })->name('notes');
 
+
+Route::get('/form', function () {
+    return view('app.notes-form');
+})->name('form');
+
+
+Route::post('save-notes',[NotesController::class, 'store'])->name('save-notes');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

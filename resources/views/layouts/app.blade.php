@@ -16,6 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/livewire@0.6.1/lib/compiler.min.js"></script>
     @livewireStyles
+    <x-head.tinymce-config/>
 </head>
 
 <body class="font-sans antialiased">
@@ -37,5 +38,5 @@
         </main>
     </div>
 </body>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js"></script>
 </html>

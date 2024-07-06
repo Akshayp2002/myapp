@@ -14,7 +14,7 @@
             </div>
 
             <!-- Component Start -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 pt-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 pt-8 p-2">
 
                 <a href="{{ route('notes') }}">
                     <div class="w-48 bg-white shadow-2xl p-6 rounded-2xl">
